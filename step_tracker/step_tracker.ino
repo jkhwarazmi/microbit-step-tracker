@@ -20,17 +20,20 @@ void setup() {
 }
 
 void loop() {
-  int32_t accelerometer[3];
+  int32_t accelerometer[3];  // Initialise accelerometer data array
 
-  // Count a step if z-axis acceleration is over the threshold
+  // Get accelerometer data and calculate magnitude of acceleration
   Acc.GetAxes(accelerometer);
-  if (abs(accelerometer[2]) > MIN_ACCELERATION) {
+  double magnitude = sqrt(pow(accelerometer[0], 2) + pow(accelerometer[1], 2) + pow(accelerometer[2], 2));
+
+  // Count a step if acceleration is over the threshold
+  if (magnitude > MIN_ACCELERATION) {
     steps++;
   }
 
-  // Print z-axis and steps to the serial plotter
-  Serial.print("Z:");
-  Serial.print(accelerometer[2]);
+  // Print magnitude and steps to the serial plotter
+  Serial.print("Magnitude:");
+  Serial.print(magnitude);
   Serial.print(",Steps:");
   Serial.println(steps);
 
