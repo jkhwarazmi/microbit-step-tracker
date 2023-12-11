@@ -13,6 +13,22 @@ Adafruit_Microbit_Matrix microbit;
 
 int steps = -1;  // Initial step count
 
+// Displays a 5 second countdown and then the mode name
+void countdown(char mode) {
+  // Count down for 5 seconds
+  for (int i = 5; i > 0; i--) {
+    microbit.print(i);
+    delay(1000);
+  }
+
+  // Display mode of operation
+  if (mode == 'A') {
+    microbit.print("A");
+  } else {
+    microbit.print("B");
+  }
+}
+
 // Counts steps for a given time in ms and returns the step count
 int count_steps(int time) {
   int start = millis();  // Start time of step counting
@@ -57,13 +73,13 @@ void setup() {
 void loop() {
   // Check for A press
   if (!digitalRead(PIN_BUTTON_A)) {
-    microbit.print("A");
+    countdown('A');
     steps = count_steps(A_TIME);
   }
 
   // Check for B press
   if (!digitalRead(PIN_BUTTON_B)) {
-    microbit.print("B");
+    countdown('B');
     steps = count_steps(B_TIME);
   }
 
