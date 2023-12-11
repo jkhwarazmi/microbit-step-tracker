@@ -2,7 +2,7 @@
 #include "LSM303AGR_ACC_Sensor.h"  // Include ACC Sensor library
 
 #define DEV_I2C Wire1  // Defines which I2C bus is used - Wire1 for the Microbit V2
-#define MIN_ACCELERATION 1300  // Minimum acceleration for a step
+#define MIN_ACCELERATION 1450  // Minimum acceleration for a step
 #define MIN_STEP_TIME 300  // Minimum time between steps
 #define A_TIME 300000  // Time to record steps for if A pressed
 #define B_TIME 30000  // Time to record steps for if B pressed
