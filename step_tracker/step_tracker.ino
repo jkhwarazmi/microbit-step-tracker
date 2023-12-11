@@ -4,6 +4,7 @@
 #define DEV_I2C Wire1  // Defines which I2C bus is used - Wire1 for the Microbit V2
 #define MIN_ACCELERATION 1300  // Minimum acceleration for a step
 #define MIN_STEP_TIME 300  // Minimum time between steps
+#define A_TIME 300000  // Time to record steps for if A pressed
 #define B_TIME 30000  // Time to record steps for if B pressed
 
 // Components
@@ -42,6 +43,7 @@ void setup() {
   microbit.begin();
 
   // Initialise buttons
+  pinMode(PIN_BUTTON_A, INPUT);
   pinMode(PIN_BUTTON_B, INPUT);
 
   // Initialize I2C bus
@@ -53,6 +55,12 @@ void setup() {
 }
 
 void loop() {
+  // Check for A press
+  if (!digitalRead(PIN_BUTTON_A)) {
+    microbit.print("A");
+    steps = count_steps(A_TIME);
+  }
+
   // Check for B press
   if (!digitalRead(PIN_BUTTON_B)) {
     microbit.print("B");
