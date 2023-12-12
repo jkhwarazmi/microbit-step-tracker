@@ -5,6 +5,7 @@ LSM303AGR_ACC_Sensor Acc(&DEV_I2C);
 Adafruit_Microbit_Matrix microbit;
 
 int steps = -1;  // Initial step count
+bool start_message = true;  // Display instructions
 
 // Displays a 5 second countdown and then the mode name
 void countdown(char mode) {

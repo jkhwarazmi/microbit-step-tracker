@@ -17,5 +17,6 @@ int count_steps(int time);  // Step counting function
 extern LSM303AGR_ACC_Sensor Acc;
 extern Adafruit_Microbit_Matrix microbit;
 extern int steps;
+extern bool start_message;
 
 #endif /* STEP_TRACKER_H */

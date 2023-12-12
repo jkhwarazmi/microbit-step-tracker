@@ -17,6 +17,12 @@ void setup() {
 }
 
 void loop() {
+  // Display start message on reset
+  if (start_message) {
+    microbit.print("STEP TRACKER   A = 5M   B = 30S");
+    start_message = false;
+  }
+
   // Check for A press
   if (!digitalRead(PIN_BUTTON_A)) {
     countdown('A');
