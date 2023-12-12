@@ -7,7 +7,11 @@ Adafruit_Microbit_Matrix microbit;
 int steps = -1;  // Initial step count
 bool start_message = true;  // Display instructions
 
-// Displays a 5 second countdown and then the mode name
+/**
+ * @brief Displays a 5 second countdown and then the mode name
+ *
+ * @param mode The user selected mode to be displayed
+ */
 void countdown(char mode) {
   // Count down for 5 seconds
   for (int i = 5; i > 0; i--) {
@@ -23,7 +27,12 @@ void countdown(char mode) {
   }
 }
 
-// Counts steps for a given time in ms and returns the step count
+/**
+ * @brief Counts steps for a given duration
+ *
+ * @param time The amount of time to count steps for in ms
+ * @return int The number of steps counted in the given time
+ */
 int count_steps(int time) {
   int start = millis();  // Start time of step counting
   int current_steps = 0;  // Steps counted
